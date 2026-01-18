@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/', async (req, res) => {
-    const {id} = req;
+    const { id } = req.body;
     const data = await db.query("SELECT * FROM todo WHERE id = $1;", [id]);
 
     if(data.rows.length === 0) {
@@ -48,6 +48,5 @@ router.delete('/', async (req, res) => {
         }
     }
 });
-
 
 module.exports = router; 
